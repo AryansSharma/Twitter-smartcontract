@@ -24,10 +24,14 @@ contract Twitter {
         permission [key] [value] = false;
         return block.timestamp;
   }
-  function resenddata(address key, address value, string calldata _content) public {
+  function resenddata(address key, address value, string calldata _content) public returns(string memory){
     s1.value1=value;
     if( permission [key] [value] = true){
       s1.content=_content;
+      return "done";
+    }else{
+      permission [key] [value] = true;
+      return "Yo may try again";
     }
 
   }
